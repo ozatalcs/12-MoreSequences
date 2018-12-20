@@ -30,11 +30,11 @@ def main():
     #        RE-commenting out the previous test to reduce the output.
     # -------------------------------------------------------------------------
 
-    run_test_generate_points_on_circle()
-    run_test_draw_points_on_circle()
-    run_test_pizza()
-    run_test_polygon()
-    # run_test_fancy_polygon()
+    #run_test_generate_points_on_circle()
+    #run_test_draw_points_on_circle()
+    #run_test_pizza()
+    #run_test_polygon()
+    run_test_fancy_polygon()
 
 
 def run_test_generate_points_on_circle():
@@ -444,7 +444,7 @@ def polygon(window, circle, number_of_segments, color, thickness):
 def run_test_fancy_polygon():
     """ Tests the   fancy_polygon   function. """
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement this TEST function.
+    # Done: 9. Implement this TEST function.
     #   It TESTS the   fancy_polygon   function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -492,13 +492,13 @@ def run_test_fancy_polygon():
     #   a contrasting color for the lines makes them especially pretty.
     # -------------------------------------------------------------------------
     # Test 4 (on another window):
-    title = ('FANCY POLYGON test 3:  20 lime green lines on blue circle,'
-             + ' hops = 7.')
-    window = rg.RoseWindow(480, 350, title)
+    title = ('FANCY POLYGON test 4:  35 blue lines on blue circle,'
+             + ' hops = 8.')
+    window = rg.RoseWindow(600, 600, title)
 
-    circle = rg.Circle(rg.Point(240, 165), 150)
-    circle.fill_color = 'blue'
-    fancy_polygon(window, circle, 20, 7, 'lime green', 5)
+    circle = rg.Circle(rg.Point(300, 300), 250)
+    circle.fill_color = 'green'
+    fancy_polygon(window, circle, 20, 8, 'blue', 1)
     window.close_on_mouse_click()
 
 def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
@@ -560,7 +560,7 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
       :type thickness:       int
     """
     # -------------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # Done: 10. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -573,7 +573,15 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
     #       appropriately.  ASK YOUR INSTRUCTOR FOR AN EXAMPLE.
     ###########################################################################
     # -------------------------------------------------------------------------
-
+    circle.attach_to(window)
+    points = generate_points_on_circle(circle, number_of_lines)
+    for k in range(number_of_lines):
+        x = (k + hops_to_next_point) % number_of_lines
+        line = rg.Line(points[k], points[x])
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
