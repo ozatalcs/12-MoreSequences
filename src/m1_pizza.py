@@ -491,7 +491,15 @@ def run_test_fancy_polygon():
     #   For all these, filling the circles with one color and using
     #   a contrasting color for the lines makes them especially pretty.
     # -------------------------------------------------------------------------
+    # Test 4 (on another window):
+    title = ('FANCY POLYGON test 3:  20 lime green lines on blue circle,'
+             + ' hops = 7.')
+    window = rg.RoseWindow(480, 350, title)
 
+    circle = rg.Circle(rg.Point(240, 165), 150)
+    circle.fill_color = 'blue'
+    fancy_polygon(window, circle, 20, 7, 'lime green', 5)
+    window.close_on_mouse_click()
 
 def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
                   thickness):
