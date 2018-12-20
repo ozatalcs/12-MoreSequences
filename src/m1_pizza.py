@@ -32,7 +32,7 @@ def main():
 
     run_test_generate_points_on_circle()
     run_test_draw_points_on_circle()
-    # run_test_pizza()
+    run_test_pizza()
     # run_test_polygon()
     # run_test_fancy_polygon()
 
@@ -151,7 +151,7 @@ def generate_points_on_circle(circle_for_points, number_of_points_to_generate):
 def run_test_draw_points_on_circle():
     """ Tests the   draw_points_on_circle   function. """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # Done: 3. Implement this TEST function.
     #   It TESTS the   draw_points_on_circle   function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -252,7 +252,7 @@ def draw_points_on_circle(window, circle, number_of_points, color):
 def run_test_pizza():
     """ Tests the   pizza   function. """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement this TEST function.
+    # Done: 5. Implement this TEST function.
     #   It TESTS the   pizza   function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -295,7 +295,13 @@ def run_test_pizza():
     #     -- a large number of thin black lines
     #     -- on a yellow-filled circle.
     # -------------------------------------------------------------------------
-
+    # Test 4:
+    title = 'PIZZA test 4:  5 slices, thin (thickness=3) blue lines.'
+    window = rg.RoseWindow(400, 400, title)
+    circle = rg.Circle(rg.Point(230, 60), 50)
+    circle.outline_thickness = 2
+    pizza(window, circle, 4, 'blue', 2)
+    window.close_on_mouse_click()
 
 def pizza(window, circle, number_of_slices, color, thickness):
     """
@@ -327,7 +333,7 @@ def pizza(window, circle, number_of_slices, color, thickness):
       :type thickness:        int
     """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # Done: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -335,7 +341,14 @@ def pizza(window, circle, number_of_slices, color, thickness):
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
     # -------------------------------------------------------------------------
-
+    points = generate_points_on_circle(circle, number_of_slices)
+    circle.attach_to(window)
+    for k in range(len(points)):
+        line = rg.Line(points[k], circle.center)
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
 
 def run_test_polygon():
     """ Tests the   polygon   function. """
